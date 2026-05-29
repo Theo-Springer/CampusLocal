@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Campus Connect</title>
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Bricolage+Grotesque:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="phone" id="phone">
+  <!-- ── NOTCH ── -->
+  <div class="notch-bar">
+    <span class="notch-time" id="clock">9:41</span>
+    <div class="notch-icons">
+      <svg class="n-icon" width="17" height="12" viewBox="0 0 17 12" fill="currentColor"><rect x="0" y="4" width="3" height="8" rx="1" opacity="0.4"/><rect x="4.5" y="2" width="3" height="10" rx="1" opacity="0.65"/><rect x="9" y="0" width="3" height="12" rx="1" opacity="0.85"/><rect x="13.5" y="0" width="3" height="12" rx="1"/></svg>
+      <svg class="n-icon" width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2.5C10.8 2.5 13.2 3.8 14.8 5.8M1.2 5.8C2.8 3.8 5.2 2.5 8 2.5"/><path d="M5.5 8.5C6.5 7.4 7.2 6.8 8 6.8s1.5.6 2.5 1.7"/><circle cx="8" cy="11" r="1" fill="currentColor"/></svg>
+      <svg class="n-icon" width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="0.5" y="0.5" width="19" height="11" rx="3.5" stroke="currentColor" stroke-opacity="0.3"/><rect x="2" y="2" width="15" height="8" rx="2" fill="currentColor"/><path d="M21 4v4a2 2 0 000-4z" fill="currentColor" opacity="0.4"/></svg>
+    </div>
+  </div>
+
+  <!-- ── MAIN ── -->
+  <div class="main-area" id="main-area">
+    <div id="demo-badge" class="demo-badge" aria-hidden="true">Compte démo</div>
+
+    <!-- ═══════════════════ FEED ═══════════════════ -->
+    <div class="screen active" id="screen-feed">
+      <div class="top-bar">
+        <div class="t-h2 t-display" style="font-size:22px; letter-spacing:-0.3px;">Campus<span style="color:var(--accent);">.</span></div>
+        <div style="display:flex;gap:8px;">
+          <div class="icon-btn" onclick="openSheet('new-post-sheet')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          </div>
+          <div class="icon-btn tab-notif" onclick="goTo('messages')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-area">
+        <!-- Stories -->
+        <div class="stories-row">
+          <div class="story-item">
+            <div class="story-add" onclick="openSheet('new-post-sheet')">
+              <div class="story-add-logo">CC</div>
+              <div class="story-plus-badge">+</div>
+            </div>
+            <span class="story-label">Ma story</span>
+          </div>
+          <div class="story-item" onclick="openStory(0)">
+            <div class="story-ring"><div class="story-av" style="background:linear-gradient(135deg,#c8f564,#3dd6c8);">LM</div></div>
+            <span class="story-label">Léa</span>
+          </div>
+          <div class="story-item" onclick="openStory(1)">
+            <div class="story-ring"><div class="story-av" style="background:linear-gradient(135deg,#ff6b9d,#9b5de5);">TK</div></div>
+            <span class="story-label">Thomas</span>
+          </div>
+          <div class="story-item" onclick="openStory(2)">
+            <div class="story-ring"><div class="story-av" style="background:linear-gradient(135deg,#4d9de0,#3dd6c8);">SB</div></div>
+            <span class="story-label">Sara</span>
+          </div>
+          <div class="story-item" onclick="openStory(3)">
+            <div class="story-ring"><div class="story-av" style="background:linear-gradient(135deg,#ffb347,#ff6b9d);">AR</div></div>
+            <span class="story-label">Axel</span>
+          </div>
+          <div class="story-item" onclick="openStory(0)">
+            <div class="story-ring unseen"><div class="story-av" style="background:linear-gradient(135deg,#9b5de5,#4d9de0);">ND</div></div>
+            <span class="story-label">Nina</span>
+          </div>
+        </div>
+
+        <div id="feed-user-posts" class="feed-user-posts"></div>
+
+        <!-- Posts -->
+        <div class="post">
+          <div class="post-header">
+            <div class="avatar av-sm profile-trigger" style="background:linear-gradient(135deg,#c8f564,#3dd6c8);" onclick="openProfile('lea')">LM</div>
+            <div class="profile-trigger" onclick="openProfile('lea')">
+              <div class="post-username">lea.martin</div>
+              <div class="post-location">📍 Bibliothèque Homneo</div>
+            </div>
+            <div class="post-more icon-btn" style="margin-left:auto;">
+              <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>
+            </div>
+          </div>
+          <div class="post-img" style="background:linear-gradient(135deg,#1a2a3a,#3dd6c8);" onclick="likePost(this)">
+            <div class="post-img-inner" style="font-size:80px;">📚</div>
+          </div>
+          <div class="post-actions">
+            <button class="post-action-btn" onclick="likePost(this.closest('.post'))">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+              <span>247</span>
+            </button>
+            <button class="post-action-btn" onclick="goTo('messages')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              <span>18</span>
+            </button>
+            <button class="post-action-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+            <button class="post-action-btn post-save-btn" onclick="showToast('Post sauvegardé ✨')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+            </button>
+          </div>
+          <div class="post-likes">247 j'aime</div>
+          <div class="post-caption"><span>lea.martin</span> Révisions droit commercial ☕ partiel dans 3 jours, on lâche rien 💪 <span class="hashtag">#BTS #NDRC #Homneo</span></div>
+          <div class="post-time">Il y a 2 heures</div>
+        </div>
+        <div class="post-divider"></div>
+
+        <div class="post">
+          <div class="post-header">
+            <div class="avatar av-sm profile-trigger" style="background:linear-gradient(135deg,#ff6b9d,#9b5de5);" onclick="openProfile('thomas')">TK</div>
+            <div class="profile-trigger" onclick="openProfile('thomas')">
+              <div class="post-username">thomas.khelil</div>
+              <div class="post-location">📍 Soirée Intégration · La Bellevilloise</div>
+            </div>
+            <div class="post-more icon-btn" style="margin-left:auto;">
+              <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>
+            </div>
+          </div>
+          <div class="post-img" style="background:linear-gradient(135deg,#2a0a1a,#ff6b9d);" onclick="likePost(this)">
+            <div class="post-img-inner" style="font-size:80px;">🎉</div>
+          </div>
+          <div class="post-actions">
+            <button class="post-action-btn liked" onclick="likePost(this.closest('.post'))">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+              <span>1 284</span>
+            </button>
+            <button class="post-action-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              <span>93</span>
+            </button>
+            <button class="post-action-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+            <button class="post-action-btn post-save-btn" onclick="showToast('Post sauvegardé ✨')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+            </button>
+          </div>
+          <div class="post-likes">1 284 j'aime</div>
+          <div class="post-caption"><span>thomas.khelil</span> INTÉGRATION 2025 c'était insane 🔥🎊 meilleure promo ever <span class="hashtag">#Homneo #Intégration #CCM</span></div>
+          <div class="post-time">Il y a 5 heures</div>
+        </div>
+        <div class="post-divider"></div>
+
+        <div class="post">
+          <div class="post-header">
+            <div class="avatar av-sm profile-trigger" style="background:linear-gradient(135deg,#4d9de0,#3dd6c8);" onclick="openProfile('sara')">SB</div>
+            <div class="profile-trigger" onclick="openProfile('sara')">
+              <div class="post-username">sara.benali</div>
+              <div class="post-location">📍 Campus Homneo · Paris</div>
+            </div>
+            <div class="post-more icon-btn" style="margin-left:auto;">
+              <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>
+            </div>
+          </div>
+          <div class="post-img" style="background:linear-gradient(135deg,#0a1a2a,#4d9de0);" onclick="likePost(this)">
+            <div class="post-img-inner" style="font-size:80px;">☀️</div>
+          </div>
+          <div class="post-actions">
+            <button class="post-action-btn" onclick="likePost(this.closest('.post'))">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+              <span>512</span>
+            </button>
+            <button class="post-action-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              <span>34</span>
+            </button>
+            <button class="post-action-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+            <button class="post-action-btn post-save-btn" onclick="showToast('Post sauvegardé ✨')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+            </button>
+          </div>
+          <div class="post-likes">512 j'aime</div>
+          <div class="post-caption"><span>sara.benali</span> Premier jour de printemps sur le campus, c'est trop beau 🌸 <span class="hashtag">#CampusLife #Homneo</span></div>
+          <div class="post-time">Il y a 1 jour</div>
+        </div>
+        <div style="height:14px;"></div>
+      </div>
+      <!-- Demo overlay: visible unless logged in as demo -->
+      <div class="demo-overlay" id="demo-overlay-feed">
+        <div class="demo-overlay-inner">
+          <div>Contenu de démonstration réservé.</div>
+          <button class="btn-primary" onclick="CampusRuntime.demoLogin()">Continuer en démo</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ MESSAGES ═══════════════════ -->
+    <div class="screen" id="screen-messages">
+      <div class="top-bar">
+        <div class="t-h2 t-display">Messages</div>
+        <div style="display:flex;gap:8px;">
+          <div class="icon-btn" onclick="showToast('Nouvelle conversation 💬')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="demo-overlay" id="demo-overlay-messages">
+        <div class="demo-overlay-inner">
+          <div>Conversations de démonstration. Accès uniquement via le mode démo.</div>
+          <button class="btn-primary" onclick="CampusRuntime.demoLogin()">Continuer en démo</button>
+        </div>
+      </div>
+      <div class="scroll-area">
+        <!-- Search -->
+        <div style="padding:10px 16px 6px;">
+          <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--r-sm);display:flex;align-items:center;gap:8px;padding:10px 14px;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input style="background:none;border:none;outline:none;color:var(--text);font-size:14px;flex:1;font-family:'Bricolage Grotesque',sans-serif;" placeholder="Rechercher…">
+          </div>
+        </div>
+
+        <div class="convo-item" onclick="openChat('lea')">
+          <div class="convo-av-wrap">
+            <div class="avatar av-md profile-trigger" style="background:linear-gradient(135deg,#c8f564,#3dd6c8);" onclick="openProfile('lea')">LM</div>
+            <div class="online-dot"></div>
+          </div>
+          <div class="convo-info">
+            <div class="convo-top"><span class="convo-name">Léa Martin</span><span class="convo-time">À l'instant</span></div>
+            <div class="convo-preview unread">T'as vu pour le partiel de droit ? 😱</div>
+          </div>
+          <div class="unread-badge">3</div>
+        </div>
+
+        <div class="convo-item" onclick="openChat('thomas')">
+          <div class="convo-av-wrap">
+            <div class="avatar av-md profile-trigger" style="background:linear-gradient(135deg,#ff6b9d,#9b5de5);" onclick="openProfile('thomas')">TK</div>
+            <div class="online-dot"></div>
+          </div>
+          <div class="convo-info">
+            <div class="convo-top"><span class="convo-name">Thomas Khelil</span><span class="convo-time">12 min</span></div>
+            <div class="convo-preview unread">On se retrouve à la BU à 14h ?</div>
+          </div>
+          <div class="unread-badge">1</div>
+        </div>
+
+        <div class="convo-item" onclick="openChat('group')">
+          <div class="convo-av-wrap">
+            <div class="avatar av-md profile-trigger" style="background:linear-gradient(135deg,#ffb347,#ff6b9d);" onclick="openProfile('group')">G</div>
+          </div>
+          <div class="convo-info">
+            <div class="convo-top"><span class="convo-name">Groupe NDRC 1A 🔥</span><span class="convo-time">47 min</span></div>
+            <div class="convo-preview">Thomas: N'oubliez pas les annales !</div>
+          </div>
+        </div>
+
+        <div class="convo-item" onclick="openChat('sara')">
+          <div class="convo-av-wrap">
+            <div class="avatar av-md profile-trigger" style="background:linear-gradient(135deg,#4d9de0,#3dd6c8);" onclick="openProfile('sara')">SB</div>
+          </div>
+          <div class="convo-info">
+            <div class="convo-top"><span class="convo-name">Sara Benali</span><span class="convo-time">2h</span></div>
+            <div class="convo-preview">Merci pour les fiches 🙏</div>
+          </div>
+        </div>
+
+        <div class="convo-item" onclick="openChat('axel')">
+          <div class="convo-av-wrap">
+            <div class="avatar av-md profile-trigger" style="background:linear-gradient(135deg,#ffb347,#ff6b9d);" onclick="openProfile('axel')">AR</div>
+          </div>
+          <div class="convo-info">
+            <div class="convo-top"><span class="convo-name">Axel Remy</span><span class="convo-time">Hier</span></div>
+            <div class="convo-preview">Tu joues à quoi ce soir ?</div>
+          </div>
+        </div>
+
+        <div class="convo-item" onclick="openChat('nina')">
+          <div class="convo-av-wrap">
+            <div class="avatar av-md profile-trigger" style="background:linear-gradient(135deg,#9b5de5,#4d9de0);" onclick="openProfile('nina')">ND</div>
+          </div>
+          <div class="convo-info">
+            <div class="convo-top"><span class="convo-name">Nina Dupont</span><span class="convo-time">Hier</span></div>
+            <div class="convo-preview">Super soirée 🎉</div>
+          </div>
+        </div>
+
+        <div style="height:14px;"></div>
+      </div>
+
+      <!-- Chat view overlay -->
+      <div class="chat-screen" id="chat-screen">
+        <div class="chat-header">
+          <div class="icon-btn" onclick="closeChat()" style="border:none;background:none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          </div>
+          <div class="avatar av-sm" id="chat-av" style="background:linear-gradient(135deg,#c8f564,#3dd6c8);">LM</div>
+          <div style="flex:1;">
+            <div style="font-size:15px;font-weight:600;color:var(--text);" id="chat-name">Léa Martin</div>
+            <div style="font-size:11px;color:var(--accent);">En ligne</div>
+          </div>
+          <div class="icon-btn" onclick="showToast('Appel vidéo 📹')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+          </div>
+        </div>
+        <div class="chat-messages" id="chat-msgs">
+          <div class="msg them"><div class="msg-bubble">Hey ! T'as vu pour le partiel de droit commercial ? 😱</div><div class="msg-time">14:23</div></div>
+          <div class="msg me"><div class="msg-bubble">Ouiii complètement paniquée 😅 t'as les annales de l'année dernière ?</div><div class="msg-time">14:25</div></div>
+          <div class="msg them"><div class="msg-bubble">J'en ai 2 ! Je te les envoie ce soir 📎</div><div class="msg-time">14:26</div></div>
+          <div class="msg me"><div class="msg-bubble">Omg merci trop 🙏🙏</div><div class="msg-time">14:27</div></div>
+          <div class="msg them"><div class="msg-bubble">On révise ensemble demain ? BU à 10h ?</div><div class="msg-time">14:28</div></div>
+        </div>
+        <div class="chat-input-bar">
+          <div class="icon-btn" onclick="showToast('Envoyer un fichier 📎')" style="flex-shrink:0;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg>
+          </div>
+          <input class="chat-input" id="chat-inp" placeholder="Message…" onkeydown="if(event.key==='Enter')sendMsg()">
+          <button class="send-btn" onclick="sendMsg()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ RÉVISIONS ═══════════════════ -->
+    <div class="screen" id="screen-revisions">
+      <div class="top-bar">
+        <div class="t-h2 t-display">Révisions</div>
+        <div style="display:flex;gap:8px;">
+          <div class="icon-btn" onclick="openSheet('new-cours-sheet')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-area">
+        <!-- Location -->
+        <div class="location-banner" onclick="openSheet('location-sheet')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div>
+            <div class="location-text">BTS NDRC 1A · Groupe Homneo</div>
+            <div class="location-sub">📍 Paris · Île-de-France · France</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+
+        <!-- Filters -->
+        <div class="filter-row">
+          <button class="filter-chip active" onclick="toggleFilter(this)">Tous</button>
+          <button class="filter-chip" onclick="toggleFilter(this)">Ma section</button>
+          <button class="filter-chip" onclick="toggleFilter(this)">Mon établ.</button>
+          <button class="filter-chip" onclick="toggleFilter(this)">Paris</button>
+          <button class="filter-chip" onclick="toggleFilter(this)">France</button>
+        </div>
+
+        <!-- Section cours -->
+        <div class="section-row">
+          <div class="section-title">📂 Cours partagés</div>
+          <div class="section-action" onclick="openSheet('new-cours-sheet')">+ Partager</div>
+        </div>
+
+        <div class="cours-card" onclick="showToast('Cours téléchargé 📥')">
+          <div class="cours-stripe" style="background:var(--blue);"></div>
+          <div class="cours-header">
+            <div class="cours-icon" style="background:rgba(77,157,224,0.12);">⚖️</div>
+            <div>
+              <div class="cours-title">Droit commercial — Synthèse complète</div>
+              <div class="cours-meta">Léa Martin · BTS NDRC 1A · il y a 2h</div>
+            </div>
+          </div>
+          <div class="cours-tags">
+            <span class="pill pill-blue">Droit</span>
+            <span class="pill pill-accent">Partiel 8 juin</span>
+            <span class="pill" style="background:rgba(255,255,255,0.06);color:var(--text3);">PDF · 12 pages</span>
+          </div>
+          <div class="cours-footer">
+            <div class="cours-stats">
+              <span class="cours-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>34 téléch.</span>
+              <span class="cours-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>12</span>
+            </div>
+            <button class="download-btn">Télécharger</button>
+          </div>
+        </div>
+
+        <div class="cours-card" onclick="showToast('Cours téléchargé 📥')">
+          <div class="cours-stripe" style="background:var(--pink);"></div>
+          <div class="cours-header">
+            <div class="cours-icon" style="background:rgba(255,107,157,0.12);">📊</div>
+            <div>
+              <div class="cours-title">Mercatique — Fiches mémo + QCM</div>
+              <div class="cours-meta">Thomas Khelil · BTS NDRC 1A · il y a 5h</div>
+            </div>
+          </div>
+          <div class="cours-tags">
+            <span class="pill pill-pink">Marketing</span>
+            <span class="pill pill-accent">Examen 12 juin</span>
+            <span class="pill" style="background:rgba(255,255,255,0.06);color:var(--text3);">PDF · 8 pages</span>
+          </div>
+          <div class="cours-footer">
+            <div class="cours-stats">
+              <span class="cours-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>58 téléch.</span>
+              <span class="cours-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>27</span>
+            </div>
+            <button class="download-btn">Télécharger</button>
+          </div>
+        </div>
+
+        <div class="cours-card" onclick="showToast('Cours téléchargé 📥')">
+          <div class="cours-stripe" style="background:var(--amber);"></div>
+          <div class="cours-header">
+            <div class="cours-icon" style="background:rgba(255,179,71,0.12);">🌍</div>
+            <div>
+              <div class="cours-title">Anglais commercial — Vocabulaire B2</div>
+              <div class="cours-meta">Sara Benali · BTS NDRC 1A · hier</div>
+            </div>
+          </div>
+          <div class="cours-tags">
+            <span class="pill pill-amber">Anglais</span>
+            <span class="pill" style="background:rgba(255,255,255,0.06);color:var(--text3);">Word · 6 pages</span>
+          </div>
+          <div class="cours-footer">
+            <div class="cours-stats">
+              <span class="cours-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>41 téléch.</span>
+            </div>
+            <button class="download-btn">Télécharger</button>
+          </div>
+        </div>
+
+        <!-- Section événements révisions -->
+        <div class="section-row" style="padding-top:6px;">
+          <div class="section-title">🗓 Sessions de révision</div>
+          <div class="section-action" onclick="openSheet('new-rev-event-sheet')">+ Créer</div>
+        </div>
+
+        <div class="event-rev-card" onclick="showToast('Session rejointe ✅')">
+          <div class="ev-rev-bg" style="background:linear-gradient(135deg,#4d9de0,#3dd6c8);"></div>
+          <div class="ev-rev-content">
+            <div class="ev-rev-top">
+              <span class="ev-rev-type" style="background:rgba(77,157,224,0.2);color:var(--blue);">🎥 VISIO</span>
+              <span class="pill pill-blue">Aujourd'hui 14h</span>
+            </div>
+            <div class="ev-rev-title">Droit constitutionnel — Révision intensive</div>
+            <div class="ev-rev-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>3/5 places</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>14h00 – 17h00</span>
+              <span>Léa M.</span>
+            </div>
+            <button class="join-btn" style="background:var(--blue);color:white;">Rejoindre le call</button>
+          </div>
+        </div>
+
+        <div class="event-rev-card" onclick="showToast('Tu rejoins la session !')">
+          <div class="ev-rev-bg" style="background:linear-gradient(135deg,#c8f564,#3dd6c8);"></div>
+          <div class="ev-rev-content">
+            <div class="ev-rev-top">
+              <span class="ev-rev-type" style="background:rgba(200,245,100,0.2);color:var(--accent);">📍 PRÉSENTIEL</span>
+              <span class="pill pill-accent">Demain 10h</span>
+            </div>
+            <div class="ev-rev-title">Éco générale — Annales en groupe</div>
+            <div class="ev-rev-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>2/4 places</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Salle D204</span>
+              <span>Thomas K.</span>
+            </div>
+            <button class="join-btn" style="background:var(--accent);color:var(--bg);">Rejoindre</button>
+          </div>
+        </div>
+
+        <div class="event-rev-card" onclick="showToast('Tu rejoins la session !')">
+          <div class="ev-rev-bg" style="background:linear-gradient(135deg,#9b5de5,#ff6b9d);"></div>
+          <div class="ev-rev-content">
+            <div class="ev-rev-top">
+              <span class="ev-rev-type" style="background:rgba(155,93,229,0.2);color:var(--purple);">🎥 VISIO</span>
+              <span class="pill pill-purple">Jeudi 18h</span>
+            </div>
+            <div class="ev-rev-title">Management — QCM préparation</div>
+            <div class="ev-rev-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>5/8 places</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>18h00 – 20h00</span>
+            </div>
+            <button class="join-btn" style="background:var(--purple);color:white;">Rejoindre le call</button>
+          </div>
+        </div>
+
+        <div style="height:14px;"></div>
+      </div>
+      <div class="demo-overlay" id="demo-overlay-revisions">
+        <div class="demo-overlay-inner">
+          <div>Ressources & sessions de révision en mode démo uniquement.</div>
+          <button class="btn-primary" onclick="CampusRuntime.demoLogin()">Continuer en démo</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ ÉVÉNEMENTS ═══════════════════ -->
+    <div class="screen" id="screen-events">
+      <div class="top-bar">
+        <div class="t-h2 t-display">Événements</div>
+        <div style="display:flex;gap:8px;">
+          <div class="icon-btn" onclick="openSheet('new-event-sheet')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-area">
+        <!-- Location filter -->
+        <div class="filter-row" style="padding-top:12px;">
+          <button class="filter-chip active" onclick="toggleFilter(this)">🌍 Global</button>
+          <button class="filter-chip" onclick="toggleFilter(this)">🏫 Mon établ.</button>
+          <button class="filter-chip" onclick="toggleFilter(this)">📍 Paris</button>
+          <button class="filter-chip" onclick="toggleFilter(this)">🎉 Soirées</button>
+          <button class="filter-chip" onclick="toggleFilter(this)">☕ Sorties</button>
+          <button class="filter-chip" onclick="toggleFilter(this)">🏃 Sport</button>
+        </div>
+
+        <!-- Hero event -->
+        <div class="events-hero" onclick="openSheet('event-detail-sheet')">
+          <div class="events-hero-bg" style="background:linear-gradient(135deg,#2a0a1a,#ff6b9d);">🎊</div>
+          <div class="events-hero-overlay"></div>
+          <div class="events-hero-content">
+            <div class="pill pill-pink" style="margin-bottom:6px;">⭐ À la une</div>
+            <div class="t-h2 t-display" style="color:white;margin-bottom:4px;">Gala de fin d'année</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.7);">14 juin · Salle Pleyel · 87 inscrits</div>
+          </div>
+        </div>
+
+        <div class="ev-card" onclick="openSheet('event-detail-sheet')">
+          <div class="ev-card-img" style="background:linear-gradient(135deg,#1a2a0a,#c8f564);">
+            <div style="font-size:52px;">☕</div>
+            <div class="ev-card-img-overlay"></div>
+            <div class="ev-card-scope"><span class="pill pill-accent">Mon établ.</span></div>
+          </div>
+          <div class="ev-card-body">
+            <div class="ev-card-title">Afterwork NDRC × Com'</div>
+            <div class="ev-card-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Lun. 2 juin · 18h30</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Bar Le Voltaire</span>
+            </div>
+            <div class="ev-avatars">
+              <div class="ev-av" style="background:linear-gradient(135deg,#c8f564,#3dd6c8);">L</div>
+              <div class="ev-av" style="background:linear-gradient(135deg,#ff6b9d,#9b5de5);">T</div>
+              <div class="ev-av" style="background:linear-gradient(135deg,#4d9de0,#3dd6c8);">S</div>
+              <span class="ev-count">+20 participants</span>
+            </div>
+            <div class="ev-actions">
+              <button class="ev-btn ev-yes" id="ev1" onclick="rsvp(this,'Afterwork NDRC')">Participe ✓</button>
+              <button class="ev-btn maybe" id="ev1m" onclick="rsvpMaybe(this,'ev1')">Intéressé</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ev-card" onclick="openSheet('event-detail-sheet')">
+          <div class="ev-card-img" style="background:linear-gradient(135deg,#0a1a3a,#4d9de0);">
+            <div style="font-size:52px;">🎵</div>
+            <div class="ev-card-img-overlay"></div>
+            <div class="ev-card-scope"><span class="pill pill-blue">Global</span></div>
+          </div>
+          <div class="ev-card-body">
+            <div class="ev-card-title">Soirée intégration promos</div>
+            <div class="ev-card-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Ven. 7 juin · 22h00</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>La Bellevilloise</span>
+            </div>
+            <div class="ev-avatars">
+              <div class="ev-av" style="background:linear-gradient(135deg,#9b5de5,#4d9de0);">N</div>
+              <div class="ev-av" style="background:linear-gradient(135deg,#ffb347,#ff6b9d);">A</div>
+              <span class="ev-count">+138 participants</span>
+            </div>
+            <div class="ev-actions">
+              <button class="ev-btn" id="ev2" onclick="rsvp(this,'Soirée intégration')">Participe</button>
+              <button class="ev-btn maybe" id="ev2m" onclick="rsvpMaybe(this,'ev2')">Intéressé</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ev-card" onclick="openSheet('event-detail-sheet')">
+          <div class="ev-card-img" style="background:linear-gradient(135deg,#1a0a3a,#9b5de5);">
+            <div style="font-size:52px;">🏃</div>
+            <div class="ev-card-img-overlay"></div>
+            <div class="ev-card-scope"><span class="pill pill-purple">Paris</span></div>
+          </div>
+          <div class="ev-card-body">
+            <div class="ev-card-title">Run matinal · Trocadéro</div>
+            <div class="ev-card-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Mer. 4 juin · 7h00</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Trocadéro</span>
+            </div>
+            <div class="ev-actions">
+              <button class="ev-btn" id="ev3" onclick="rsvp(this,'Run matinal')">Participe</button>
+              <button class="ev-btn maybe" onclick="showToast('Marqué comme intéressé 🌟')">Intéressé</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="create-ev-btn" onclick="openSheet('new-event-sheet')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          Créer un événement
+        </div>
+        <div style="height:14px;"></div>
+      </div>
+      <div class="demo-overlay" id="demo-overlay-events">
+        <div class="demo-overlay-inner">
+          <div>Événements d'exemple accessibles en mode démo.</div>
+          <button class="btn-primary" onclick="CampusRuntime.demoLogin()">Continuer en démo</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ RENCONTRES ═══════════════════ -->
+    <div class="screen" id="screen-rencontres">
+      <div class="top-bar">
+        <div class="t-h2 t-display">Rencontres</div>
+        <div class="icon-btn" onclick="openSheet('rencontre-profil-sheet')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
+        </div>
+      </div>
+
+      <!-- Intent bar -->
+      <div class="intent-bar" id="intent-bar">
+        <div class="intent-chip active" onclick="selectIntent(this,'📚 Révision')" data-label="📚 Révision">📚 Révision</div>
+        <div class="intent-chip" onclick="selectIntent(this,'🏃 Sport')" data-label="🏃 Sport">🏃 Sport</div>
+        <div class="intent-chip" onclick="selectIntent(this,'☕ Café')" data-label="☕ Café">☕ Café</div>
+        <div class="intent-chip" onclick="selectIntent(this,'🎮 Gaming')" data-label="🎮 Gaming">🎮 Gaming</div>
+        <div class="intent-chip" onclick="selectIntent(this,'🍺 Verre')" data-label="🍺 Verre">🍺 Verre</div>
+        <div class="intent-chip" onclick="selectIntent(this,'🌆 Sortie')" data-label="🌆 Sortie">🌆 Sortie</div>
+      </div>
+
+      <!-- Swipe area -->
+      <div class="swipe-area" id="swipe-area">
+        <!-- Cards injected by JS -->
+      </div>
+
+      <!-- Match popup -->
+      <div class="match-popup" id="match-popup">
+        <div class="match-emoji">🎉</div>
+        <div class="match-title">C'est un match !</div>
+        <div class="match-sub" id="match-sub">Vous avez tous les deux liké. Envoyez un message !</div>
+        <button class="btn-primary" style="margin-bottom:12px;" onclick="closeMatch();goTo('messages')">Envoyer un message</button>
+        <button class="btn-ghost" onclick="closeMatch()">Continuer à swiper</button>
+      </div>
+
+      <!-- Swipe actions -->
+      <div class="swipe-actions">
+        <button class="swipe-btn nope" onclick="swipeCard('left')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <button class="swipe-btn super" onclick="swipeCard('super')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </button>
+        <button class="swipe-btn like" onclick="swipeCard('right')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </button>
+      </div>
+      <div class="demo-overlay" id="demo-overlay-rencontres">
+        <div class="demo-overlay-inner">
+          <div>Rencontres (swipe) disponibles uniquement en mode démo.</div>
+          <button class="btn-primary" onclick="CampusRuntime.demoLogin()">Continuer en démo</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ PROFIL ═══════════════════ -->
+    <div class="screen" id="screen-profil">
+      <div class="scroll-area">
+        <div class="top-bar" style="position:relative;z-index:1;">
+          <div class="t-h2 t-display">Mon profil</div>
+          <div style="display:flex;gap:8px;">
+            <div class="icon-btn" onclick="openSheet('settings-sheet')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="profil-header">
+          <div class="profil-top-row">
+            <div class="profil-av-wrap">
+              <div class="profil-av-ring">
+                <div class="profil-av-inner" id="main-profile-avatar">LM</div>
+              </div>
+            </div>
+            <div class="profil-stats-row">
+              <div class="profil-stat">
+                <div class="profil-stat-num" id="profile-posts">12</div>
+                <div class="profil-stat-label">Posts</div>
+              </div>
+              <div class="profil-stat">
+                <div class="profil-stat-num" id="profile-followers">284</div>
+                <div class="profil-stat-label">Followers</div>
+              </div>
+              <div class="profil-stat">
+                <div class="profil-stat-num" id="profile-following">147</div>
+                <div class="profil-stat-label">Suivis</div>
+              </div>
+            </div>
+          </div>
+          <div class="profil-name" id="profile-name">Lola Martin</div>
+          <div class="profil-bio" id="profile-bio">BTS NDRC 1ère année · Groupe Homneo ✨<br>Passionnée de marketing digital & tennis 🎾<br>Paris, Île-de-France</div>
+          <div class="profil-tags" id="profile-tags">
+            <span class="pill pill-accent">📚 Révision</span>
+            <span class="pill pill-blue">🤝 Réseautage</span>
+            <span class="pill pill-teal">✅ Vérifié</span>
+          </div>
+          <div class="profil-btn-row">
+            <button class="profil-edit-btn" onclick="openSheet('edit-profil-sheet')">Modifier le profil</button>
+            <button class="profil-edit-btn" onclick="openSheet('rencontre-profil-sheet')">Profil rencontre</button>
+            <div class="profil-share-btn" onclick="showToast('Profil copié 🔗')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="profil-nav">
+          <button class="profil-nav-btn active" onclick="this.parentElement.querySelectorAll('.profil-nav-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          </button>
+          <button class="profil-nav-btn" onclick="this.parentElement.querySelectorAll('.profil-nav-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+          </button>
+          <button class="profil-nav-btn" onclick="this.parentElement.querySelectorAll('.profil-nav-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </button>
+        </div>
+
+        <div class="profil-grid">
+          <div class="profil-post-thumb" style="background:linear-gradient(135deg,#1a2a3a,#3dd6c8);" onclick="showToast('Post ouvert 🖼')">📚</div>
+          <div class="profil-post-thumb" style="background:linear-gradient(135deg,#2a0a1a,#ff6b9d);" onclick="showToast('Post ouvert 🖼')">🎉</div>
+          <div class="profil-post-thumb" style="background:linear-gradient(135deg,#1a3a0a,#c8f564);" onclick="showToast('Post ouvert 🖼')">☀️</div>
+          <div class="profil-post-thumb" style="background:linear-gradient(135deg,#1a1a3a,#9b5de5);" onclick="showToast('Post ouvert 🖼')">🎓</div>
+          <div class="profil-post-thumb" style="background:linear-gradient(135deg,#3a1a0a,#ffb347);" onclick="showToast('Post ouvert 🖼')">🏃</div>
+          <div class="profil-post-thumb" style="background:linear-gradient(135deg,#0a2a3a,#4d9de0);" onclick="showToast('Post ouvert 🖼')">🎵</div>
+          <div class="profil-post-thumb" style="background:linear-gradient(135deg,#2a2a0a,#c8f564);" onclick="showToast('Post ouvert 🖼')">☕</div>
+          <div class="profil-post-thumb" style="background:linear-gradient(135deg,#0a1a3a,#3dd6c8);" onclick="showToast('Post ouvert 🖼')">🌙</div>
+          <div class="profil-post-thumb" style="background:linear-gradient(135deg,#3a0a1a,#ff6b9d);" onclick="showToast('Post ouvert 🖼')">🌸</div>
+        </div>
+        <div style="height:14px;"></div>
+      </div>
+    </div>
+
+  </div><!-- /main-area -->
+
+  <!-- ── TAB BAR ── -->
+  <div class="tab-bar">
+    <button class="tab active" id="tab-feed" onclick="goTo('feed')">
+      <div class="tab-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+      </div>
+      <span class="tab-label">Feed</span>
+    </button>
+    <button class="tab" id="tab-messages" onclick="goTo('messages')">
+      <div class="tab-icon tab-notif">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      </div>
+      <span class="tab-label">Messages</span>
+    </button>
+    <button class="tab" id="tab-revisions" onclick="goTo('revisions')">
+      <div class="tab-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+      </div>
+      <span class="tab-label">Révisions</span>
+    </button>
+    <button class="tab" id="tab-events" onclick="goTo('events')">
+      <div class="tab-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <span class="tab-label">Événements</span>
+    </button>
+    <button class="tab" id="tab-rencontres" onclick="goTo('rencontres')">
+      <div class="tab-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      </div>
+      <span class="tab-label">Rencontres</span>
+    </button>
+    <button class="tab" id="tab-profil" onclick="goTo('profil')">
+      <div class="tab-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <span class="tab-label">Profil</span>
+    </button>
+  </div>
+
+  <!-- ══ STORY VIEWER ══ -->
+  <div class="story-viewer" id="story-viewer">
+    <div class="story-progress-bars" id="story-bars"></div>
+    <div class="story-top">
+      <div class="avatar av-sm" id="sv-av" style="background:linear-gradient(135deg,#c8f564,#3dd6c8);">LM</div>
+      <div style="flex:1;margin-left:8px;">
+        <div style="font-size:13px;font-weight:600;color:white;" id="sv-name">Léa Martin</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.6);" id="sv-time">il y a 2h</div>
+      </div>
+      <button onclick="closeStory()" style="background:none;border:none;color:white;cursor:pointer;padding:4px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="story-content" id="sv-content" style="background:linear-gradient(135deg,#1a2a3a,#3dd6c8);">
+      <div style="font-size:90px;">📚</div>
+      <div class="story-text-overlay">
+        <div style="font-size:14px;color:white;font-weight:500;">Révisions droit commercial ⚡</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.7);margin-top:3px;">Partiel dans 3 jours, courage à tous 💪</div>
+      </div>
+    </div>
+    <div class="story-bottom">
+      <input class="story-reply-input" placeholder="Répondre à Léa…" onkeydown="if(event.key==='Enter'){showToast('Réponse envoyée 💬');this.value='';closeStory();}">
+    </div>
+  </div>
+
+  <!-- ══ SHEETS ══ -->
+
+  <!-- New post -->
+  <div class="sheet-overlay" id="new-post-sheet" onclick="closeSheetOutside(event,this)">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <div class="t-h2" style="margin-bottom:18px;">Nouveau post</div>
+      <div class="post-type-grid">
+        <div class="post-type-btn sel" onclick="selectPostType(this)"><div class="post-type-icon">📸</div><div class="post-type-label">Photo</div></div>
+        <div class="post-type-btn" onclick="selectPostType(this)"><div class="post-type-icon">🎥</div><div class="post-type-label">Vidéo</div></div>
+        <div class="post-type-btn" onclick="selectPostType(this)"><div class="post-type-icon">📖</div><div class="post-type-label">Story</div></div>
+        <div class="post-type-btn" onclick="selectPostType(this)"><div class="post-type-icon">📝</div><div class="post-type-label">Texte</div></div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Légende</label>
+        <textarea class="form-input" id="new-post-caption" rows="4" placeholder="Décris ton post…"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Visibilité</label>
+        <select class="form-select" id="new-post-visibility"><option>Tout le monde</option><option>Mon établissement</option><option>Ma section</option></select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Localisation</label>
+        <input class="form-input" id="new-post-location" placeholder="📍 Ajouter un lieu…">
+      </div>
+      <button class="btn-primary" id="new-post-publish-btn">Publier</button>
+    </div>
+  </div>
+
+  <!-- New cours -->
+  <div class="sheet-overlay" id="new-cours-sheet" onclick="closeSheetOutside(event,this)">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <div class="t-h2" style="margin-bottom:18px;">Partager un cours</div>
+      <div class="form-group">
+        <label class="form-label">Titre du document</label>
+        <input class="form-input" placeholder="Ex: Fiche synthèse droit commercial…">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Matière</label>
+        <select class="form-select"><option>Droit commercial</option><option>Mercatique</option><option>Anglais</option><option>Éco générale</option><option>Management</option></select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Visibilité</label>
+        <select class="form-select"><option>Ma section</option><option>Mon établissement</option><option>Paris</option><option>France entière</option></select>
+      </div>
+      <div style="background:var(--bg3);border:1px dashed var(--border2);border-radius:var(--r);padding:24px;text-align:center;margin-bottom:14px;cursor:pointer;" onclick="showToast('Fichier sélectionné 📎')">
+        <div style="font-size:30px;margin-bottom:8px;">📎</div>
+        <div style="font-size:13px;color:var(--text2);">Appuyer pour importer un fichier</div>
+        <div style="font-size:11px;color:var(--text3);margin-top:3px;">PDF, Word, PowerPoint…</div>
+      </div>
+      <button class="btn-primary" onclick="closeSheet('new-cours-sheet');showToast('Cours partagé avec ta section ✅')">Partager</button>
+    </div>
+  </div>
+
+  <!-- New rev event -->
+  <div class="sheet-overlay" id="new-rev-event-sheet" onclick="closeSheetOutside(event,this)">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <div class="t-h2" style="margin-bottom:18px;">Créer une session</div>
+      <div style="display:flex;gap:8px;margin-bottom:14px;">
+        <button class="filter-chip active" id="rt-visio" onclick="document.getElementById('rt-visio').classList.add('active');document.getElementById('rt-pres').classList.remove('active')">🎥 Visio</button>
+        <button class="filter-chip" id="rt-pres" onclick="document.getElementById('rt-pres').classList.add('active');document.getElementById('rt-visio').classList.remove('active')">📍 Présentiel</button>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Titre</label>
+        <input class="form-input" placeholder="Ex: Révision droit constitutionnel…">
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+        <div class="form-group" style="margin-bottom:0;"><label class="form-label">Date</label><input type="date" class="form-input"></div>
+        <div class="form-group" style="margin-bottom:0;"><label class="form-label">Heure</label><input type="time" class="form-input" value="14:00"></div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Places max</label>
+        <input type="number" class="form-input" value="5" min="2" max="20">
+      </div>
+      <button class="btn-primary" onclick="closeSheet('new-rev-event-sheet');showToast('Session créée ! Les autres peuvent rejoindre 🎓')">Créer la session</button>
+    </div>
+  </div>
+
+  <!-- New event -->
+  <div class="sheet-overlay" id="new-event-sheet" onclick="closeSheetOutside(event,this)">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <div class="t-h2" style="margin-bottom:18px;">Créer un événement</div>
+      <div class="form-group">
+        <label class="form-label">Nom</label>
+        <input class="form-input" id="ev-name" placeholder="Ex: Soirée NDRC 2025…">
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px;">
+        <div class="post-type-btn sel" onclick="selectPostType(this)"><div class="post-type-icon">🎓</div><div class="post-type-label" style="font-size:10px;">Gala</div></div>
+        <div class="post-type-btn" onclick="selectPostType(this)"><div class="post-type-icon">🍻</div><div class="post-type-label" style="font-size:10px;">Afterwork</div></div>
+        <div class="post-type-btn" onclick="selectPostType(this)"><div class="post-type-icon">🎵</div><div class="post-type-label" style="font-size:10px;">Soirée</div></div>
+        <div class="post-type-btn" onclick="selectPostType(this)"><div class="post-type-icon">🏃</div><div class="post-type-label" style="font-size:10px;">Sport</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+        <div class="form-group" style="margin-bottom:0;"><label class="form-label">Date</label><input type="date" class="form-input"></div>
+        <div class="form-group" style="margin-bottom:0;"><label class="form-label">Heure</label><input type="time" class="form-input" value="20:00"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Lieu</label><input class="form-input" placeholder="Adresse ou nom du lieu…"></div>
+      <div class="form-group"><label class="form-label">Visibilité</label><select class="form-select"><option>Ma section</option><option>Mon établissement</option><option>Paris</option><option>Global</option></select></div>
+      <button class="btn-primary" onclick="closeSheet('new-event-sheet');showToast('Événement publié ! 🎉')">Publier</button>
+    </div>
+  </div>
+
+  <!-- Event detail -->
+  <div class="sheet-overlay" id="event-detail-sheet" onclick="closeSheetOutside(event,this)">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <div style="background:linear-gradient(135deg,#2a0a1a,#ff6b9d);border-radius:var(--r);height:130px;display:flex;align-items:center;justify-content:center;font-size:60px;margin-bottom:16px;">🎊</div>
+      <div class="t-h2" style="margin-bottom:6px;">Gala de fin d'année</div>
+      <div style="font-size:13px;color:var(--text2);margin-bottom:12px;line-height:1.6;">Le grand événement de l'année ! Venez fêter la fin de vos études en grande pompe. DJ, buffet, photobooth et surprises au programme ✨</div>
+      <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:14px;">
+        <div style="display:flex;gap:8px;font-size:13px;color:var(--text2);">📅 Samedi 14 juin 2025 · 20h00 – 3h00</div>
+        <div style="display:flex;gap:8px;font-size:13px;color:var(--text2);">📍 Salle Pleyel, 252 Rue du Faubourg Saint-Honoré, Paris</div>
+        <div style="display:flex;gap:8px;font-size:13px;color:var(--text2);">👥 87 / 120 places — <span style="color:var(--pink);">33 places restantes</span></div>
+        <div style="display:flex;gap:8px;font-size:13px;color:var(--text2);">🎟 Entrée : 15€ (adhérents) · 25€ (invités)</div>
+      </div>
+      <div class="ev-avatars" style="margin-bottom:14px;">
+        <div class="ev-av" style="background:linear-gradient(135deg,#c8f564,#3dd6c8);">L</div>
+        <div class="ev-av" style="background:linear-gradient(135deg,#ff6b9d,#9b5de5);">T</div>
+        <div class="ev-av" style="background:linear-gradient(135deg,#4d9de0,#3dd6c8);">S</div>
+        <div class="ev-av" style="background:linear-gradient(135deg,#ffb347,#ff6b9d);">A</div>
+        <div class="ev-av" style="background:linear-gradient(135deg,#9b5de5,#4d9de0);">N</div>
+        <span class="ev-count">+82 autres</span>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button class="btn-primary" style="flex:2;" onclick="closeSheet('event-detail-sheet');showToast('Tu participes au Gala ! 🎉')">Je participe</button>
+        <button class="btn-ghost" style="flex:1;" onclick="closeSheet('event-detail-sheet');showToast('Partagé 🔗')">Partager</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Location sheet -->
+  <div class="sheet-overlay" id="location-sheet" onclick="closeSheetOutside(event,this)">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <div class="t-h2" style="margin-bottom:18px;">Ma localisation</div>
+      <div class="form-group"><label class="form-label">Classe / Section</label><select class="form-select"><option>BTS NDRC 1ère année</option><option>BTS NDRC 2ème année</option><option>BTS Communication 1ère</option></select></div>
+      <div class="form-group"><label class="form-label">Établissement</label><select class="form-select"><option>Groupe Homneo</option><option>Groupe CCM</option><option>Faculté de Droit</option></select></div>
+      <div class="form-group"><label class="form-label">Ville</label><select class="form-select"><option>Paris</option><option>Lyon</option><option>Marseille</option><option>Bordeaux</option></select></div>
+      <div class="form-group"><label class="form-label">Région</label><select class="form-select"><option>Île-de-France</option><option>Auvergne-Rhône-Alpes</option><option>PACA</option></select></div>
+      <div class="form-group"><label class="form-label">Pays</label><select class="form-select"><option>France 🇫🇷</option><option>Belgique 🇧🇪</option><option>Suisse 🇨🇭</option></select></div>
+      <button class="btn-primary" onclick="closeSheet('location-sheet');showToast('Localisation mise à jour 📍')">Enregistrer</button>
+    </div>
+  </div>
+
+  <!-- Rencontre profil sheet -->
+  <div class="sheet-overlay" id="rencontre-profil-sheet" onclick="closeSheetOutside(event,this)">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <div class="t-h2" style="margin-bottom:6px;">Profil rencontre</div>
+      <div style="font-size:13px;color:var(--text2);margin-bottom:18px;">Configure ton profil visible dans le swipe. Tu peux changer ton intention à tout moment.</div>
+      <div class="photo-picker" onclick="document.getElementById('rencontre-photo-input').click()">
+        <div class="photo-picker-avatar lg" id="rencontre-profile-preview">LM</div>
+        <div>
+          <div class="photo-picker-title">Photo rencontre</div>
+          <div class="photo-picker-sub">Appuie pour ajouter ta photo visible dans le swipe</div>
+        </div>
+      </div>
+      <input type="file" id="rencontre-photo-input" accept="image/*" hidden>
+      <div class="form-group"><label class="form-label">Bio rencontre</label><input class="form-input" value="Étudiante NDRC, passionnée de sport et de marketing 🎾" placeholder="Présente-toi en quelques mots…"></div>
+      <div class="form-group">
+        <label class="form-label">Intention du moment (change quand tu veux)</label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;" id="intent-selector">
+          <div class="post-type-btn sel" onclick="selectPostType(this)"><div class="post-type-icon">📚</div><div class="post-type-label">Révision</div></div>
+          <div class="post-type-btn" onclick="selectPostType(this)"><div class="post-type-icon">🏃</div><div class="post-type-label">Sport</div></div>
+          <div class="post-type-btn" onclick="selectPostType(this)"><div class="post-type-icon">☕</div><div class="post-type-label">Café</div></div>
+          <div class="post-type-btn" onclick="selectPostType(this)"><div class="post-type-icon">🎮</div><div class="post-type-label">Gaming</div></div>
+          <div class="post-type-btn" onclick="selectPostType(this)"><div class="post-type-icon">🍺</div><div class="post-type-label">Verre</div></div>
+          <div class="post-type-btn" onclick="selectPostType(this)"><div class="post-type-icon">🌆</div><div class="post-type-label">Sortie</div></div>
+        </div>
+      </div>
+      <div class="form-group"><label class="form-label">Portée de la recherche</label><select class="form-select"><option>Mon établissement</option><option>Ma ville · Paris</option><option>Ma région · Île-de-France</option></select></div>
+      <div class="form-group"><label class="form-label">Je cherche</label><select class="form-select"><option>Tout le monde</option><option>Uniquement des garçons</option><option>Uniquement des filles</option></select></div>
+      <button class="btn-primary" onclick="closeSheet('rencontre-profil-sheet');showToast('Profil rencontre sauvegardé ✨')">Enregistrer</button>
+    </div>
+  </div>
+
+  <!-- Edit profil sheet -->
+  <div class="sheet-overlay" id="edit-profil-sheet" onclick="closeSheetOutside(event,this)">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <div class="t-h2" style="margin-bottom:18px;">Modifier le profil</div>
+      <div class="photo-picker" onclick="document.getElementById('profile-photo-input').click()">
+        <div class="photo-picker-avatar lg" id="edit-profile-preview">LM</div>
+        <div>
+          <div class="photo-picker-title">Photo de profil</div>
+          <div class="photo-picker-sub">Appuie pour importer ou remplacer ta photo</div>
+        </div>
+      </div>
+      <input type="file" id="profile-photo-input" accept="image/*" hidden>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:0;">
+        <div class="form-group"><label class="form-label">Prénom</label><input id="edit-firstname" class="form-input" value="Lola"></div>
+        <div class="form-group"><label class="form-label">Nom</label><input id="edit-lastname" class="form-input" value="Martin"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Pseudo</label><input id="edit-pseudo" class="form-input" value="lola.martin"></div>
+      <div class="form-group"><label class="form-label">Bio</label><input id="edit-bio" class="form-input" value="BTS NDRC 1ère année · Passionnée de marketing & tennis 🎾"></div>
+      <button class="btn-primary" id="edit-profil-save-btn">Sauvegarder</button>
+    </div>
+  </div>
+
+  <!-- Settings sheet -->
+  <div class="sheet-overlay" id="settings-sheet" onclick="closeSheetOutside(event,this)">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <div class="t-h2" style="margin-bottom:18px;">Paramètres</div>
+      <div style="display:flex;flex-direction:column;gap:2px;">
+        <div style="padding:14px 0;border-bottom:1px solid var(--border);cursor:pointer;display:flex;justify-content:space-between;align-items:center;" onclick="openSheet('edit-profil-sheet')">
+          <span style="font-size:14px;color:var(--text);">Modifier le profil</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div style="padding:14px 0;border-bottom:1px solid var(--border);cursor:pointer;display:flex;justify-content:space-between;align-items:center;" onclick="showToast('Notifications ✅')">
+          <span style="font-size:14px;color:var(--text);">Notifications</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div style="padding:14px 0;border-bottom:1px solid var(--border);cursor:pointer;display:flex;justify-content:space-between;align-items:center;" onclick="openSheet('location-sheet')">
+          <span style="font-size:14px;color:var(--text);">Localisation & campus</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div style="padding:14px 0;border-bottom:1px solid var(--border);cursor:pointer;display:flex;justify-content:space-between;align-items:center;" onclick="showToast('Confidentialité 🔒')">
+          <span style="font-size:14px;color:var(--text);">Confidentialité</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div style="padding:14px 0;border-bottom:1px solid var(--border);cursor:pointer;display:flex;justify-content:space-between;align-items:center;" onclick="openSheet('report-sheet')">
+          <span style="font-size:14px;color:var(--text);">Signaler un contenu</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div style="padding:14px 0;border-bottom:1px solid var(--border);cursor:pointer;display:flex;justify-content:space-between;align-items:center;" onclick="openSheet('legal-sheet')">
+          <span style="font-size:14px;color:var(--text);">CGU & confidentialité</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div id="admin-panel" style="display:none;padding:14px 0;border-bottom:1px solid var(--border);">
+          <div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;">Outils admin</div>
+          <div class="form-group">
+            <label class="form-label">Compte cible</label>
+            <select class="form-select" id="admin-user-select"></select>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div class="form-group">
+              <label class="form-label">Profil</label>
+              <input class="form-input" id="admin-profile-id" value="lea">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Index message</label>
+              <input class="form-input" id="admin-message-index" type="number" min="0" value="0">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Mute (minutes)</label>
+            <input class="form-input" id="admin-mute-minutes" type="number" min="1" value="60">
+          </div>
+          <div class="profile-sheet-actions" style="margin-top:10px;">
+            <button class="btn-primary" onclick="CampusRuntime.deleteAdminMessage()">Supprimer message</button>
+            <button class="btn-ghost" onclick="CampusRuntime.muteAdminUser()">Mute compte</button>
+          </div>
+          <div class="profile-sheet-actions" style="margin-top:10px;">
+            <button class="btn-ghost" style="border-color:#ff6b6b;color:#ff6b6b;" onclick="CampusRuntime.deleteAdminAccount()">Supprimer compte</button>
+          </div>
+          <div id="admin-status" style="font-size:12px;color:var(--text2);margin-top:10px;"></div>
+        </div>
+        <div style="padding:14px 0;">
+          <button id="settings-logout-btn" class="btn-ghost" style="background:none;border:none;color:#ff4444;font-size:14px;cursor:pointer;padding:12px 0;width:100%;text-align:left;">Se déconnecter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profile detail -->
+  <div class="sheet-overlay" id="profile-sheet" onclick="closeSheetOutside(event,this)">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <div class="profile-sheet-cover" id="profile-sheet-cover">
+        <div class="profile-sheet-avatar" id="profile-sheet-avatar">LM</div>
+      </div>
+      <div class="profile-sheet-top">
+        <div class="profile-sheet-info">
+          <div class="t-h2" id="profile-sheet-name">Profil</div>
+          <div class="profile-sheet-meta" id="profile-sheet-meta">Campus Connect</div>
+        </div>
+      </div>
+      <div class="profile-sheet-stats">
+        <div class="profile-sheet-stat">
+          <div class="profile-sheet-stat-num" id="profile-sheet-posts">12</div>
+          <div class="profile-sheet-stat-label">Posts</div>
+        </div>
+        <div class="profile-sheet-stat">
+          <div class="profile-sheet-stat-num" id="profile-sheet-followers">284</div>
+          <div class="profile-sheet-stat-label">Followers</div>
+        </div>
+        <div class="profile-sheet-stat">
+          <div class="profile-sheet-stat-num" id="profile-sheet-following">147</div>
+          <div class="profile-sheet-stat-label">Suivis</div>
+        </div>
+      </div>
+      <div class="profile-sheet-bio" id="profile-sheet-bio"></div>
+      <div class="profil-tags" id="profile-sheet-tags"></div>
+      <div class="profile-sheet-actions">
+        <button class="btn-primary" id="profile-sheet-message-btn" onclick="messageCurrentProfile()">Envoyer un message</button>
+        <button class="btn-ghost" id="profile-sheet-follow-btn" onclick="toggleCurrentProfileFollow()">S'abonner</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Report sheet -->
+  <div class="sheet-overlay" id="report-sheet" onclick="closeSheetOutside(event,this)">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <div class="t-h2" style="margin-bottom:8px;">Signaler un contenu</div>
+      <div style="font-size:13px;color:var(--text2);margin-bottom:14px;line-height:1.5;">Le signalement est envoyé à l'équipe de modération pour examen.</div>
+      <div class="report-box">
+        <select class="form-select" id="report-type">
+          <option>Spam</option>
+          <option>Contenu inapproprié</option>
+          <option>Harcèlement</option>
+          <option>Faux profil</option>
+          <option>Autre</option>
+        </select>
+        <textarea class="report-textarea" id="report-note" placeholder="Ajoute un contexte si besoin..."></textarea>
+        <button class="btn-primary" onclick="submitReportFromSheet()">Envoyer le signalement</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Legal sheet -->
+  <div class="sheet-overlay" id="legal-sheet" onclick="closeSheetOutside(event,this)">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <div class="t-h2" style="margin-bottom:12px;">CGU & confidentialité</div>
+      <div class="legal-copy">
+        <div>
+          <h3>Usage</h3>
+          <p>Campus Connect sert à publier, discuter, rejoindre des événements et partager des contenus entre membres vérifiés.</p>
+        </div>
+        <div>
+          <h3>Données</h3>
+          <p>Les comptes, messages, abonnements et médias sont stockés côté serveur pour synchroniser l'app sur téléphone et ordinateur.</p>
+        </div>
+        <div>
+          <h3>Modération</h3>
+          <p>Les contenus signalés peuvent être examinés, masqués ou supprimés en cas de non-respect des règles.</p>
+        </div>
+        <div>
+          <h3>Vos droits</h3>
+          <ul>
+            <li>Modifier votre profil et vos médias</li>
+            <li>Supprimer vos conversations et vos contenus</li>
+            <li>Demander l'export ou l'effacement de vos données</li>
+          </ul>
+        </div>
+      </div>
+      <button class="btn-primary" style="margin-top:16px;" onclick="closeSheet('legal-sheet')">Fermer</button>
+    </div>
+  </div>
+
+  <!-- Auth overlay -->
+  <div class="auth-overlay" id="auth-overlay">
+    <div class="auth-card">
+      <div class="auth-kicker">Campus Connect · accès sécurisé</div>
+      <div class="auth-title">Connexion à l'application</div>
+      <div class="auth-subtitle">Crée un compte ou connecte-toi pour retrouver tes messages, profils suivis et contenus sur téléphone comme sur PC.</div>
+      <div class="auth-grid">
+        <input class="form-input" id="auth-email" type="email" placeholder="Email">
+        <input class="form-input" id="auth-password" type="password" placeholder="Mot de passe">
+      </div>
+
+      <!-- Champs supplémentaires affichés uniquement pour l'inscription -->
+      <div id="auth-register-fields" class="auth-register-fields">
+        <input class="form-input" id="auth-lastname" placeholder="Nom de famille">
+        <input class="form-input" id="auth-firstname" placeholder="Prénom">
+        <input class="form-input" id="auth-birth" type="date" placeholder="Date de naissance">
+      </div>
+      <div id="auth-error" class="auth-error" aria-live="polite"></div>
+      <div class="auth-actions">
+        <button class="btn-primary" onclick="CampusRuntime.login()">Se connecter</button>
+        <button class="btn-ghost" onclick="CampusRuntime.register()">Créer un compte</button>
+      </div>
+      <button class="auth-switch" onclick="CampusRuntime.demoLogin()">Continuer en démo</button>
+      <div class="auth-footnote">Les données sont enregistrées sur le serveur local pendant le développement. En production, on relierait ce bloc à une vraie authentification.</div>
+    </div>
+  </div>
+
+  <script src="conversations.js" defer></script>
+  <script src="script.js" defer></script>
+  <script src="app-runtime.js" defer></script>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast">
+    <span id="toast-msg">Action effectuée</span>
+  </div>
+</div>
+</body>
+</html>

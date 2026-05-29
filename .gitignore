@@ -1,0 +1,22 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Logs
+logs/*
+!logs/.gitkeep
+*.log
+
+# Legacy data file at repo root
+/app-data.json
+
+# OS / editor noise
+Thumbs.db
+.DS_Store
+.vscode/

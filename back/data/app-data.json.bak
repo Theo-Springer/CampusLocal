@@ -1,0 +1,394 @@
+{
+  "users": [
+    {
+      "id": "u-demo",
+      "name": "Lola Martin",
+      "email": "demo@campus.local",
+      "passwordHash": "seed:e9e62292d94c5cdcee3df89d8421c15648d7b2318e35d59de9daf6ab6b121c5d",
+      "salt": "seed",
+      "photo": "",
+      "bio": "BTS NDRC 1ère année · Passionnée de marketing & tennis 🎾",
+      "role": "user",
+      "mutedUntil": "2026-05-28T08:05:52Z"
+    },
+    {
+      "id": "u-admin",
+      "name": "Admin Campus",
+      "email": "admin@campus.local",
+      "passwordHash": "seed:c219ea1835fc4b02fe9fa083f68500e8ffdf31c03070baa8dd8b32858d2a64f5",
+      "salt": "seed",
+      "photo": "",
+      "bio": "Compte de modération pour tester la suppression de messages, comptes et les mutes.",
+      "role": "admin",
+      "mutedUntil": ""
+    },
+    {
+      "id": "u-505718ca6a53",
+      "name": "Test User",
+      "firstname": "Test",
+      "lastname": "User",
+      "birth": "2000-01-01",
+      "email": "test.user6@example.com",
+      "passwordHash": "2a3bf873c808ddec284723ed36081401:aa18097d545407c43824f2dacff3b588d6304e4ebc6dbe43a13a5c21dc9fc024",
+      "photo": "",
+      "bio": "BTS NDRC 1ère année · Nouveau membre",
+      "role": "user",
+      "mutedUntil": ""
+    },
+    {
+      "id": "u-aabbcbaabbf7",
+      "name": "New User",
+      "firstname": "New",
+      "lastname": "User",
+      "birth": "2001-01-01",
+      "email": "new.user@example.com",
+      "passwordHash": "f23d23800a0ea52614b295cb45fc17a5:02b5290f7ff5d89da6988d19e05f3198506ea33a211d9257b40b8a9834329849",
+      "photo": "",
+      "bio": "BTS NDRC 1ère année · Nouveau membre",
+      "role": "user",
+      "mutedUntil": ""
+    }
+  ],
+  "sessions": {
+    "48f248d2453dd4f99e1d133bb26f9c5b611d": "u-demo",
+    "6d12add3c38871953a1794b712bd0928266e": "u-admin",
+    "95f58510af387c45fb76416130890f8ecf5b": "u-demo",
+    "cc54e5bfe7df111b553a7f58cd80e15f0579": "u-admin",
+    "12b65737a924a78ebbe74a765026cd4439c4": "u-demo",
+    "93883ed70d29d5ea6958746d919e9dd09eab": "u-admin",
+    "ca6d062907152c79b107ca5d6bcf1e6bbfbd": "u-admin",
+    "2732feb3204641d3a2b511212c1d8780d7df": "u-demo",
+    "f939623316a27b608a342e8784888eb1e195": "u-admin",
+    "67ac8ab35cc6120321db29d64b906e7f20bd": "u-admin",
+    "d15cc33e2d09d728d10a4470ffa0c372eeae": "u-demo",
+    "3661a97f0915e2bffe9539dfcf606a8663a4": "u-admin",
+    "b39108651a7b859c4d6837057b1f76105c8d": "u-505718ca6a53",
+    "0a0610ba4a17c668a85218ff97b575d2499b": "u-505718ca6a53",
+    "cf7f1600673c948051618bcedcb7abc34630": "u-demo",
+    "7ddb134e7f3626c10f088778e73f0ce07dbb": "u-aabbcbaabbf7",
+    "4f40ac37b00f7ce282a38fd7c610debd009d": "u-demo",
+    "39bace481097a550df03b3193f2ac2ea2094": "u-demo"
+  },
+  "follows": {
+    "u-demo": [
+      "lea",
+      "sara"
+    ],
+    "u-admin": [],
+    "u-505718ca6a53": [],
+    "u-aabbcbaabbf7": []
+  },
+  "conversations": {
+    "u-demo": {
+      "lea": [
+        {
+          "from": "me",
+          "text": "Oui, je révise toute la matinée 😅",
+          "time": "08:16"
+        },
+        {
+          "from": "them",
+          "text": "J'ai partagé les annales sur le groupe, regarde",
+          "time": "08:17"
+        },
+        {
+          "from": "me",
+          "text": "Salut Léa",
+          "time": "9:50"
+        },
+        {
+          "from": "them",
+          "text": "J’ai aussi les annales si tu veux ✍️",
+          "time": "09:50"
+        },
+        {
+          "from": "me",
+          "text": "test mute",
+          "time": "09:59"
+        },
+        {
+          "from": "me",
+          "text": "test mute",
+          "time": "09:59"
+        },
+        {
+          "from": "me",
+          "text": "blocked message",
+          "time": "10:00"
+        },
+        {
+          "from": "me",
+          "text": "blocked message",
+          "time": "10:05"
+        }
+      ],
+      "thomas": [
+        {
+          "from": "them",
+          "text": "On se retrouve à la BU à 14h ?",
+          "time": "12:01"
+        },
+        {
+          "from": "me",
+          "text": "Oui, j'arrive avec mes fiches.",
+          "time": "12:04"
+        },
+        {
+          "from": "them",
+          "text": "Parfait, je prends le café ☕",
+          "time": "12:05"
+        }
+      ],
+      "group": [
+        {
+          "from": "them",
+          "text": "Thomas: N'oubliez pas les annales !",
+          "time": "09:10"
+        },
+        {
+          "from": "me",
+          "text": "Je les ai déjà imprimées, je vous les envoie.",
+          "time": "09:12"
+        },
+        {
+          "from": "them",
+          "text": "Léa: Merci, t'assures 🙌",
+          "time": "09:13"
+        }
+      ],
+      "sara": [
+        {
+          "from": "them",
+          "text": "Merci pour les fiches 🙏",
+          "time": "17:25"
+        },
+        {
+          "from": "me",
+          "text": "Avec plaisir, si tu veux on révise ensemble.",
+          "time": "17:28"
+        },
+        {
+          "from": "them",
+          "text": "Carrément, demain après-midi ?",
+          "time": "17:30"
+        }
+      ],
+      "axel": [
+        {
+          "from": "them",
+          "text": "Tu joues à quoi ce soir ?",
+          "time": "18:40"
+        },
+        {
+          "from": "me",
+          "text": "Un peu de tout, mais plutôt chill.",
+          "time": "18:43"
+        },
+        {
+          "from": "them",
+          "text": "On peut se faire un verre après le sport ?",
+          "time": "18:45"
+        }
+      ],
+      "nina": [
+        {
+          "from": "them",
+          "text": "Super soirée 🎉",
+          "time": "23:08"
+        },
+        {
+          "from": "me",
+          "text": "Oui, c'était trop bien !",
+          "time": "23:11"
+        },
+        {
+          "from": "them",
+          "text": "On remet ça bientôt ?",
+          "time": "23:12"
+        }
+      ]
+    },
+    "u-admin": {
+      "thomas": [
+        {
+          "from": "them",
+          "text": "On se retrouve à la BU à 14h ?",
+          "time": "12:01"
+        },
+        {
+          "from": "me",
+          "text": "Oui, j'arrive avec mes fiches.",
+          "time": "12:04"
+        },
+        {
+          "from": "them",
+          "text": "Parfait, je prends le café ☕",
+          "time": "12:05"
+        },
+        {
+          "from": "me",
+          "text": "test message",
+          "time": "10:25"
+        },
+        {
+          "from": "them",
+          "text": "Parfait, j’amène le café ☕",
+          "time": "10:25"
+        }
+      ],
+      "lea": [
+        {
+          "from": "them",
+          "text": "T'as vu pour le partiel de droit ?",
+          "time": "08:14"
+        },
+        {
+          "from": "me",
+          "text": "Oui, je révise toute la matinée 😅",
+          "time": "08:16"
+        },
+        {
+          "from": "them",
+          "text": "J'ai partagé les annales sur le groupe, regarde",
+          "time": "08:17"
+        },
+        {
+          "from": "me",
+          "text": "aie aie aie",
+          "time": "10:25"
+        },
+        {
+          "from": "them",
+          "text": "Oui carrément, on révise ensemble ?",
+          "time": "10:25"
+        },
+        {
+          "from": "me",
+          "text": "nan",
+          "time": "10:25"
+        },
+        {
+          "from": "them",
+          "text": "J’ai aussi les annales si tu veux ✍️",
+          "time": "10:25"
+        },
+        {
+          "from": "me",
+          "text": "tjr pas",
+          "time": "10:25"
+        },
+        {
+          "from": "them",
+          "text": "Trop bien, envoie-moi ça 📎",
+          "time": "10:25"
+        }
+      ]
+    },
+    "u-505718ca6a53": {
+      "lea": [
+        {
+          "from": "them",
+          "text": "T'as vu pour le partiel de droit ?",
+          "time": "08:14"
+        },
+        {
+          "from": "me",
+          "text": "Oui, je révise toute la matinée 😅",
+          "time": "08:16"
+        },
+        {
+          "from": "them",
+          "text": "J'ai partagé les annales sur le groupe, regarde",
+          "time": "08:17"
+        }
+      ],
+      "thomas": [
+        {
+          "from": "them",
+          "text": "On se retrouve à la BU à 14h ?",
+          "time": "12:01"
+        },
+        {
+          "from": "me",
+          "text": "Oui, j'arrive avec mes fiches.",
+          "time": "12:04"
+        },
+        {
+          "from": "them",
+          "text": "Parfait, je prends le café ☕",
+          "time": "12:05"
+        }
+      ],
+      "group": [
+        {
+          "from": "them",
+          "text": "Thomas: N'oubliez pas les annales !",
+          "time": "09:10"
+        },
+        {
+          "from": "me",
+          "text": "Je les ai déjà imprimées, je vous les envoie.",
+          "time": "09:12"
+        },
+        {
+          "from": "them",
+          "text": "Léa: Merci, t'assures 🙌",
+          "time": "09:13"
+        }
+      ],
+      "sara": [
+        {
+          "from": "them",
+          "text": "Merci pour les fiches 🙏",
+          "time": "17:25"
+        },
+        {
+          "from": "me",
+          "text": "Avec plaisir, si tu veux on révise ensemble.",
+          "time": "17:28"
+        },
+        {
+          "from": "them",
+          "text": "Carrément, demain après-midi ?",
+          "time": "17:30"
+        }
+      ],
+      "axel": [
+        {
+          "from": "them",
+          "text": "Tu joues à quoi ce soir ?",
+          "time": "18:40"
+        },
+        {
+          "from": "me",
+          "text": "Un peu de tout, mais plutôt chill.",
+          "time": "18:43"
+        },
+        {
+          "from": "them",
+          "text": "On peut se faire un verre après le sport ?",
+          "time": "18:45"
+        }
+      ],
+      "nina": [
+        {
+          "from": "them",
+          "text": "Super soirée 🎉",
+          "time": "23:08"
+        },
+        {
+          "from": "me",
+          "text": "Oui, c'était trop bien !",
+          "time": "23:11"
+        },
+        {
+          "from": "them",
+          "text": "On remet ça bientôt ?",
+          "time": "23:12"
+        }
+      ]
+    },
+    "u-aabbcbaabbf7": {}
+  },
+  "reports": []
+}
