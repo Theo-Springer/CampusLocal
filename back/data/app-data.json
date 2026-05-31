@@ -47,71 +47,10 @@
       "bio": "BTS NDRC 1ère année · Nouveau membre",
       "role": "user",
       "mutedUntil": ""
-    },
-    {
-      "id": "u-df081b122462",
-      "name": "Lolo Martines",
-      "firstname": "Rémi",
-      "lastname": "Dupont",
-      "birth": "2000-06-01",
-      "email": "real.user@example.com",
-      "passwordHash": "3d45f1f42732a7a2452277d6c09ba2db:87668b7a22c48970fc203544b3b1611a12492f11ffc3a2bef2d3dc52a72d570c",
-      "photo": "",
-      "bio": "Bio utilisateur non-démo — compte propre.",
-      "role": "user",
-      "mutedUntil": ""
-    },
-    {
-      "id": "u-edb42eab753d",
-      "name": "Test User",
-      "firstname": "Test",
-      "lastname": "User",
-      "birth": "2000-01-01",
-      "email": "user_x4g6c6@test.local",
-      "passwordHash": "5cc46ff8a52c8112e833a44f0cbd048f:95414fe61382788f259ab5dee2dbf270a22d461c1428327732256920ab34b94e",
-      "photo": "",
-      "bio": "BTS NDRC 1ère année · Nouveau membre",
-      "role": "user",
-      "mutedUntil": ""
-    },
-    {
-      "id": "u-2440a6b02748",
-      "name": "Shared User",
-      "firstname": "Shared",
-      "lastname": "User",
-      "birth": "2000-01-01",
-      "email": "shared_85h5kx@test.local",
-      "passwordHash": "85b39f37e3b855071c3e79696868add9:cc033068a4192644f0ac4891cb93d122fae2225a26f4f8e6898ad52248a6927b",
-      "photo": "",
-      "bio": "BTS NDRC 1ère année · Nouveau membre",
-      "role": "user",
-      "mutedUntil": ""
     }
   ],
   "sessions": {
-    "48f248d2453dd4f99e1d133bb26f9c5b611d": "u-demo",
-    "6d12add3c38871953a1794b712bd0928266e": "u-admin",
-    "95f58510af387c45fb76416130890f8ecf5b": "u-demo",
-    "cc54e5bfe7df111b553a7f58cd80e15f0579": "u-admin",
-    "12b65737a924a78ebbe74a765026cd4439c4": "u-demo",
-    "93883ed70d29d5ea6958746d919e9dd09eab": "u-admin",
-    "ca6d062907152c79b107ca5d6bcf1e6bbfbd": "u-admin",
-    "2732feb3204641d3a2b511212c1d8780d7df": "u-demo",
-    "f939623316a27b608a342e8784888eb1e195": "u-admin",
-    "67ac8ab35cc6120321db29d64b906e7f20bd": "u-admin",
-    "d15cc33e2d09d728d10a4470ffa0c372eeae": "u-demo",
-    "3661a97f0915e2bffe9539dfcf606a8663a4": "u-admin",
-    "b39108651a7b859c4d6837057b1f76105c8d": "u-505718ca6a53",
-    "0a0610ba4a17c668a85218ff97b575d2499b": "u-505718ca6a53",
-    "cf7f1600673c948051618bcedcb7abc34630": "u-demo",
-    "7ddb134e7f3626c10f088778e73f0ce07dbb": "u-aabbcbaabbf7",
-    "4f40ac37b00f7ce282a38fd7c610debd009d": "u-demo",
-    "edf27505c352771d574881244a7fac73689f": "u-demo",
-    "1feb7fc354bc25245429d422ea557f0768ec": "u-df081b122462",
-    "039c98e86020187e0e2910eb86dddb05da18": "u-demo",
-    "95a6cf5ed456e89755bb9a4be2e6e0c3ff76": "u-demo",
-    "d2f56a97c505e4545dab596b0d3534b701d3": "u-edb42eab753d",
-    "30643bb9630299dff55cba5bc6aa3bee1c09": "u-2440a6b02748"
+    "2a3a1181a6c07cf474d0e370414b847d0ac8": "u-demo"
   },
   "follows": {
     "u-demo": [
@@ -120,10 +59,7 @@
     ],
     "u-admin": [],
     "u-505718ca6a53": [],
-    "u-aabbcbaabbf7": [],
-    "u-df081b122462": [],
-    "u-edb42eab753d": [],
-    "u-2440a6b02748": []
+    "u-aabbcbaabbf7": []
   },
   "conversations": {
     "u-demo": {
@@ -435,10 +371,7 @@
         }
       ]
     },
-    "u-aabbcbaabbf7": {},
-    "u-df081b122462": {},
-    "u-edb42eab753d": {},
-    "u-2440a6b02748": {}
+    "u-aabbcbaabbf7": {}
   },
   "posts": {
     "u-demo": [
@@ -461,15 +394,33 @@
         "createdAt": "2026-05-29T12:00:00Z"
       }
     ],
-    "u-admin": [],
-    "u-edb42eab753d": [
-      {
-        "id": "p-cfaee148a0d6",
-        "content": "📖 · Post test depuis le bouton Publier · 📍 Campus Homneo · 🌍 Ma section",
-        "bg": "linear-gradient(135deg,#1a1a3a,#9b5de5)",
-        "createdAt": "2026-05-29T08:19:02.707454Z"
-      }
-    ]
+    "u-admin": []
   },
-  "reports": []
+  "reports": [],
+  "feedPosts": [
+    {
+      "id": "p1",
+      "authorId": "u-demo",
+      "authorName": "Lola Martin",
+      "content": "📚",
+      "bg": "linear-gradient(135deg,#1a2a3a,#3dd6c8)",
+      "createdAt": "2026-05-31T20:56:10.023019Z"
+    },
+    {
+      "id": "p2",
+      "authorId": "u-demo",
+      "authorName": "Lola Martin",
+      "content": "🎉",
+      "bg": "linear-gradient(135deg,#2a0a1a,#ff6b9d)",
+      "createdAt": "2026-05-31T20:56:10.023247Z"
+    },
+    {
+      "id": "p3",
+      "authorId": "u-demo",
+      "authorName": "Lola Martin",
+      "content": "☀️",
+      "bg": "linear-gradient(135deg,#1a3a0a,#c8f564)",
+      "createdAt": "2026-05-31T20:56:10.023403Z"
+    }
+  ]
 }

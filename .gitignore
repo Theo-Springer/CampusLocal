@@ -20,3 +20,5 @@ logs/*
 Thumbs.db
 .DS_Store
 .vscode/
+# Local secrets for developer (not to commit)
+back/.secrets/

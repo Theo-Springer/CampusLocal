@@ -149,6 +149,14 @@ def load_data() -> dict[str, Any]:
         save_data(data)
         return data
     data = json.loads(DATA_PATH.read_text(encoding='utf-8'))
+    # Remove any persisted sessions that point to the demo account so that
+    # users are not automatically signed in as the demo user on first visit.
+    sessions = data.setdefault('sessions', {})
+    demo_sids = [sid for sid, uid in list(sessions.items()) if uid == 'u-demo']
+    if demo_sids:
+        for sid in demo_sids:
+            del sessions[sid]
+        save_data(data)
     if ensure_seed_accounts(data):
         save_data(data)
     return data

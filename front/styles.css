@@ -211,54 +211,6 @@ body {
   position: fixed;
   bottom: 100px;
   left: 50%;
-
-  /* Demo overlay to block demo-only content when not in demo mode */
-  .demo-overlay {
-    position: absolute;
-    inset: 56px 0 0 0; /* below top-bar */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0,0,0,0.45);
-    z-index: 40;
-  }
-  .demo-overlay .demo-overlay-inner {
-    background: rgba(255,255,255,0.06);
-    border-radius: 12px;
-    padding: 18px;
-    text-align: center;
-    color: var(--text);
-    max-width: 360px;
-  }
-  .demo-overlay .btn-primary { margin-top:10px; }
-
-  /* Hide overlays when .demo-active is present on body */
-  body.demo-active .demo-overlay { display: none; }
-
-  /* Demo badge for demo account */
-  .demo-badge {
-    position: fixed;
-    top: 12px;
-    right: 18px;
-    left: auto;
-    background: var(--accent);
-    color: var(--bg);
-    padding: 6px 10px;
-    border-radius: 999px;
-    font-weight: 700;
-    font-size: 12px;
-    z-index: 200;
-    display: none;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.5);
-  }
-  .demo-badge.show { display: inline-block; }
-
-  /* Make demo overlay button smaller (avoid full-width band) */
-  .demo-overlay .btn-primary {
-    display: inline-block !important;
-    padding: 8px 14px !important;
-    border-radius: 8px !important;
-  }
   transform: translateX(-50%) translateY(20px);
   background: var(--card2);
   border: 1px solid var(--border2);
@@ -275,37 +227,7 @@ body {
 .toast.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
 .toast-msg { font-size: 13px; color: var(--text); }
 
-/* Demo overlay — global rules (ensure button is not full-width) */
-.demo-overlay {
-  position: absolute;
-  inset: 56px 0 0 0; /* below top-bar */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0,0,0,0.28);
-  z-index: 40;
-  pointer-events: auto;
-}
-.demo-overlay .demo-overlay-inner {
-  background: rgba(255,255,255,0.04);
-  border-radius: 12px;
-  padding: 14px 16px;
-  text-align: center;
-  color: var(--text);
-  max-width: 420px;
-  width: calc(100% - 48px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.45);
-}
-.demo-overlay .btn-primary {
-  margin-top: 10px;
-  display: inline-block !important;
-  padding: 8px 14px !important;
-  border-radius: 10px !important;
-  width: auto !important;
-  min-width: 140px !important;
-}
-/* hide demo overlay when demo active */
-body.demo-active .demo-overlay { display: none !important; }
+/* demo overlay removed */
 
 /* ─── MODAL SHEET ────────────────────────────── */
 .sheet-overlay {
@@ -1352,6 +1274,12 @@ body.demo-active .demo-overlay { display: none !important; }
   display: none;
 }
 .auth-error.show { display: block; }
+
+/* input error state used on auth form */
+.input-error {
+  box-shadow: 0 0 0 2px rgba(255,77,77,0.06) inset, 0 0 0 2px rgba(255,77,77,0.06);
+  border: 1px solid rgba(255,77,77,0.22);
+}
 
 .auth-register-fields { display: none; margin-bottom: 12px; }
 .auth-register-fields.show { display: block; }

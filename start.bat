@@ -32,13 +32,14 @@ if not exist "%~dp0.venv\Scripts\python.exe" (
 
 REM Prefer venv python, fallback to system python
 set PY_RUN=
+set PY_FLAGS=
 if exist "%~dp0.venv\Scripts\python.exe" (
-    set PY_RUN="%~dp0.venv\Scripts\python.exe"
+    set "PY_RUN=%~dp0.venv\Scripts\python.exe"
 ) else (
-    where python >nul 2>nul && set PY_RUN=python || set PY_RUN=py -3
+    where python >nul 2>nul && (set "PY_RUN=python") || (where py >nul 2>nul && (set "PY_RUN=py" & set "PY_FLAGS=-3") )
 )
 
-start "Campus Connect" /B cmd /c %PY_RUN% "%~dp0back\server.py" > "%~dp0logs\server.log" 2>&1
+start "Campus Connect" /B cmd /c ""%PY_RUN%" %PY_FLAGS% "%~dp0back\server.py" > "%~dp0logs\server.log" 2>&1"
 
 timeout /t 2 /nobreak >nul
 start "" "http://127.0.0.1:3000/"

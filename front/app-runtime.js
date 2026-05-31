@@ -286,9 +286,21 @@
     } catch (err) {
       let msg = 'Erreur de connexion';
       try {
-        if (err && err.data && err.data.error === 'invalid_credentials') msg = 'Email ou mot de passe incorrect';
-        else if (err && err.data && err.data.error) msg = String(err.data.error);
-        else if (err && err.message) msg = String(err.message);
+        if (err && err.data && err.data.error === 'invalid_credentials') {
+          msg = 'Email ou mot de passe incorrect';
+        } else if (err && err.data && err.data.error) {
+          msg = String(err.data.error);
+        } else if (err && err.message) {
+          const m = String(err.message || '');
+          // Network / fetch errors — give a clearer hint to start the backend
+          if (m.includes('Failed to fetch') || m.toLowerCase().includes('networkerror') || m.toLowerCase().includes('request_failed') || m.toLowerCase().includes('request failed')) {
+            msg = 'Impossible de joindre le serveur local — vérifie que le backend est démarré (start.bat / python back/server.py) et réessaie.';
+          } else {
+            msg = m || msg;
+          }
+        } else {
+          msg = 'Impossible de se connecter — vérifie ta connexion réseau ou le serveur local.';
+        }
       } catch (e) {}
       setAuthError(msg);
       return;
@@ -303,6 +315,13 @@
     }
     el.textContent = message;
     el.classList.add('show');
+    // mark inputs with error styling
+    try {
+      const email = document.getElementById('auth-email');
+      const pwd = document.getElementById('auth-password');
+      if (email) email.classList.add('input-error');
+      if (pwd) pwd.classList.add('input-error');
+    } catch (e) {}
   }
 
   function clearAuthError() {
@@ -310,6 +329,12 @@
     if (!el) return;
     el.textContent = '';
     el.classList.remove('show');
+    try {
+      const email = document.getElementById('auth-email');
+      const pwd = document.getElementById('auth-password');
+      if (email) email.classList.remove('input-error');
+      if (pwd) pwd.classList.remove('input-error');
+    } catch (e) {}
   }
 
   function bindAuthInputs() {
@@ -357,19 +382,38 @@
       }
     }
     const fullName = `${firstname} ${lastname}`;
-    const data = await request('/api/auth/register', {
-      method: 'POST',
-      body: JSON.stringify({ name: fullName, firstname, lastname, email, password, birth }),
-    });
-    sessionUser = data.user;
-    hideAuth();
-    setUserHeader(sessionUser);
-    setAdminPanelVisibility();
-    updateDemoOverlays();
-    updateDemoBadge();
-    updateProfileFromSession();
-    showToast('Compte créé ✨');
-    await fetchUserPosts();
+    try {
+      const data = await request('/api/auth/register', {
+        method: 'POST',
+        body: JSON.stringify({ name: fullName, firstname, lastname, email, password, birth }),
+      });
+      sessionUser = data.user;
+      hideAuth();
+      setUserHeader(sessionUser);
+      setAdminPanelVisibility();
+      updateDemoOverlays();
+      updateDemoBadge();
+      updateProfileFromSession();
+      showToast('Compte créé ✨');
+      await fetchUserPosts();
+    } catch (err) {
+      // Prefer a clear message when registration fails (email already used / backend unreachable)
+      let msg = 'Erreur lors de la création du compte';
+      try {
+        if (err && err.data && err.data.error === 'email_in_use') msg = 'Cette adresse e‑mail est déjà utilisée';
+        else if (err && err.data && err.data.error) msg = String(err.data.error);
+        else if (err && err.message) {
+          const m = String(err.message || '');
+          if (m.includes('Failed to fetch') || m.toLowerCase().includes('networkerror') || m.toLowerCase().includes('request_failed')) {
+            msg = 'Impossible de joindre le serveur local — vérifie que le backend est démarré (start.bat / python back/server.py) et réessaie.';
+          } else {
+            msg = m || msg;
+          }
+        }
+      } catch (e) {}
+      setAuthError(msg);
+      return;
+    }
   }
 
   async function demoLogin() {
@@ -454,7 +498,7 @@
     // Show or hide demo-only UI pieces depending on whether the current session
     // user is the dedicated demo account.
     const isDemoAccount = !!(sessionUser && (sessionUser.id === 'u-demo' || sessionUser.email === 'demo@campus.local'));
-    const demoOverlays = Array.from(document.querySelectorAll('.demo-overlay'));
+    const demoOverlays = [];
     const demoBadge = document.getElementById('demo-badge');
     const setAreaVisibility = (areaSelector, visible, emptyText) => {
       const area = document.querySelector(areaSelector);
@@ -526,18 +570,25 @@
     }
   }
 
+  // Position demo overlays so they're centered relative to the main header title
+  function alignDemoOverlay() {
+    try {
+      const title = document.querySelector('#screen-feed .t-h2.t-display');
+      if (!title) return;
+      const rect = title.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const overlays = [];
+      overlays.forEach(o => {
+        o.style.left = `${centerX}px`;
+        o.style.transform = 'translateX(-50%)';
+      });
+    } catch (e) {
+      // ignore
+    }
+  }
+
   // Expose for debugging/tests
   window.updateDemoOverlays = updateDemoOverlays;
-        const profilePosts = data.profilePosts || [];
-        renderFeedPosts(posts);
-        const grid = document.querySelector('.profil-grid');
-        if (grid && profilePosts.length) {
-          grid.innerHTML = profilePosts.map(p => {
-            const bg = p.bg ? `background:${p.bg};` : '';
-            const content = p.content || '';
-            return `<div class="profil-post-thumb" style="${bg}" onclick="showToast('Post ouvert 🖼')">${content}</div>`;
-          }).join('');
-        }
   function updateDemoBadge() {
     const badge = document.getElementById('demo-badge');
     if (!badge) return;
@@ -798,18 +849,25 @@
       });
       return;
     }
-
-    // Backwards-compatible fallback: avoid binding on broad containers.
-    const logoutEl = Array.from(settingsSheet.querySelectorAll('*')).find(el => el.textContent && el.textContent.trim() === 'Se déconnecter');
-    if (logoutEl) {
-      if (logoutEl.dataset && logoutEl.dataset.logoutBound) return;
-      if (logoutEl.dataset) logoutEl.dataset.logoutBound = '1';
-      logoutEl.addEventListener('click', (e) => {
-        e.stopPropagation();
-        try { showToast('À bientôt 👋'); } catch (er) {}
-        try { if (typeof closeSheet === 'function') closeSheet('settings-sheet'); } catch (er) {}
-        logout();
-      });
+    // Backwards-compatible fallback: install a delegated listener on the document
+    // so clicks are handled even if the sheet is rendered after boot.
+    if (!window._logoutDelegatedBound) {
+      window._logoutDelegatedBound = true;
+      document.addEventListener('click', (ev) => {
+        try {
+          const t = ev.target;
+          if (!t) return;
+          // match by id, or by exact text for legacy cases
+          if (t.id === 'settings-logout-btn' || (t.textContent && t.textContent.trim() === 'Se déconnecter')) {
+            ev.stopPropagation();
+            ev.preventDefault();
+            try { showToast('À bientôt 👋'); } catch (er) {}
+            try { if (typeof closeSheet === 'function') closeSheet('settings-sheet'); } catch (er) {}
+            // Call logout via CampusRuntime if available, otherwise call local function
+            try { (window.CampusRuntime && typeof window.CampusRuntime.logout === 'function') ? window.CampusRuntime.logout() : logout(); } catch (er) { try { logout(); } catch(e) {} }
+          }
+        } catch (e) {}
+      }, true);
     }
   }
 

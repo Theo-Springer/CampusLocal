@@ -181,13 +181,7 @@
         </div>
         <div style="height:14px;"></div>
       </div>
-      <!-- Demo overlay: visible unless logged in as demo -->
-      <div class="demo-overlay" id="demo-overlay-feed">
-        <div class="demo-overlay-inner">
-          <div>Contenu de démonstration réservé.</div>
-          <button class="btn-primary" onclick="CampusRuntime.demoLogin()">Continuer en démo</button>
-        </div>
-      </div>
+      <!-- demo overlay removed -->
     </div>
 
     <!-- ═══════════════════ MESSAGES ═══════════════════ -->
@@ -200,12 +194,7 @@
           </div>
         </div>
       </div>
-      <div class="demo-overlay" id="demo-overlay-messages">
-        <div class="demo-overlay-inner">
-          <div>Conversations de démonstration. Accès uniquement via le mode démo.</div>
-          <button class="btn-primary" onclick="CampusRuntime.demoLogin()">Continuer en démo</button>
-        </div>
-      </div>
+      <!-- demo overlay removed -->
       <div class="scroll-area">
         <!-- Search -->
         <div style="padding:10px 16px 6px;">
@@ -477,12 +466,7 @@
 
         <div style="height:14px;"></div>
       </div>
-      <div class="demo-overlay" id="demo-overlay-revisions">
-        <div class="demo-overlay-inner">
-          <div>Ressources & sessions de révision en mode démo uniquement.</div>
-          <button class="btn-primary" onclick="CampusRuntime.demoLogin()">Continuer en démo</button>
-        </div>
-      </div>
+      <!-- demo overlay removed -->
     </div>
 
     <!-- ═══════════════════ ÉVÉNEMENTS ═══════════════════ -->
@@ -591,12 +575,7 @@
         </div>
         <div style="height:14px;"></div>
       </div>
-      <div class="demo-overlay" id="demo-overlay-events">
-        <div class="demo-overlay-inner">
-          <div>Événements d'exemple accessibles en mode démo.</div>
-          <button class="btn-primary" onclick="CampusRuntime.demoLogin()">Continuer en démo</button>
-        </div>
-      </div>
+      <!-- demo overlay removed -->
     </div>
 
     <!-- ═══════════════════ RENCONTRES ═══════════════════ -->
@@ -644,12 +623,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
         </button>
       </div>
-      <div class="demo-overlay" id="demo-overlay-rencontres">
-        <div class="demo-overlay-inner">
-          <div>Rencontres (swipe) disponibles uniquement en mode démo.</div>
-          <button class="btn-primary" onclick="CampusRuntime.demoLogin()">Continuer en démo</button>
-        </div>
-      </div>
+      <!-- demo overlay removed -->
     </div>
 
     <!-- ═══════════════════ PROFIL ═══════════════════ -->
@@ -1058,7 +1032,7 @@
           <div id="admin-status" style="font-size:12px;color:var(--text2);margin-top:10px;"></div>
         </div>
         <div style="padding:14px 0;">
-          <button id="settings-logout-btn" class="btn-ghost" style="background:none;border:none;color:#ff4444;font-size:14px;cursor:pointer;padding:12px 0;width:100%;text-align:left;">Se déconnecter</button>
+          <button id="settings-logout-btn" type="button" onclick="try{(window.CampusRuntime||{}).logout()}catch(e){}" class="btn-ghost" style="background:none;border:none;color:#ff4444;font-size:14px;cursor:pointer;padding:12px 0;width:100%;text-align:left;">Se déconnecter</button>
         </div>
       </div>
     </div>
@@ -1181,6 +1155,8 @@
   <script src="conversations.js" defer></script>
   <script src="script.js" defer></script>
   <script src="app-runtime.js" defer></script>
+
+  <!-- Fallback handlers removed — use main runtime for login/logout/demo -->
 
   <!-- TOAST -->
   <div class="toast" id="toast">
