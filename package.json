@@ -1,0 +1,32 @@
+{
+  "name": "campuslocal",
+  "version": "2.0.0",
+  "description": "Instagram-like social network for campus communities",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "packages/frontend/*"
+  ],
+  "scripts": {
+    "dev:backend": "cd packages/backend && python -m uvicorn src.main:app --reload --host 0.0.0.0 --port 8000",
+    "dev:official": "cd packages/frontend/official && npm run dev",
+    "dev:demo": "cd packages/frontend/demo && npm run dev",
+    "dev": "npm-run-all --parallel dev:backend dev:demo dev:official",
+    "dev:all": "npm run dev",
+    "dev:with-demo": "npm-run-all --parallel dev:backend dev:demo",
+    "dev:demo-only": "npm run dev:demo",
+    "dev:official-only": "npm run dev:official",
+    "dev:backend-only": "npm run dev:backend",
+    "launch": "node launch.js",
+    "launch:demo": "node launch.js demo",
+    "launch:official": "node launch.js official",
+    "build": "npm run build -w packages/frontend/official && npm run build -w packages/frontend/demo",
+    "build:official": "npm run build -w packages/frontend/official",
+    "build:demo": "npm run build -w packages/frontend/demo",
+    "test": "npm run test -w packages/backend && npm run test -w packages/frontend/official",
+    "install:all": "npm install && cd packages/backend && python -m venv venv && source venv/bin/activate && pip install -r requirements.txt"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}

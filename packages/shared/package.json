@@ -1,0 +1,25 @@
+{
+  "name": "@campuslocal/shared",
+  "version": "2.0.0",
+  "description": "Shared types, constants, and utilities",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./types": "./dist/types/index.d.ts",
+    "./constants": "./dist/constants/index.d.ts",
+    "./utils": "./dist/utils/index.d.ts"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
