@@ -23,43 +23,8 @@ function Check-Prerequisites {
         $nodeVersion = & node --version
         Write-Colored "[OK] Node.js: $nodeVersion" Green
     } catch {
-        Write-Colored "[ERROR] Node.js not found!" Red
+        Write-Colored "[ERROR] Node.js introuvable !" Red
         exit 1
-    }
-    try {
-        $npmVersion = & npm --version
-        Write-Colored "[OK] npm: $npmVersion" Green
-    } catch {
-        Write-Colored "[ERROR] npm not found!" Red
-        exit 1
-    }
-    try {
-        $pythonVersion = & python --version 2>&1
-        Write-Colored "[OK] Python: $pythonVersion" Green
-    } catch {
-        Write-Colored "[WARN] Python not found" Yellow
-    }
-}
-
-function Install-Dependencies {
-    Write-Section "Installing Dependencies"
-    $nodeModulesPath = Join-Path $PSScriptRoot "node_modules"
-    if (-not (Test-Path $nodeModulesPath)) {
-        Write-Colored "Installing root dependencies..." Yellow
-        & npm install
-    }
-    
-    # Correction Join-Path pour PowerShell 5.1
-    $backendDir = Join-Path $PSScriptRoot "packages\backend"
-    $venvPath = Join-Path $backendDir "venv"
-    
-    if (-not (Test-Path $venvPath)) {
-        Write-Colored "Creating Python virtual environment..." Yellow
-        Set-Location $backendDir
-        & python -m venv venv
-        $pipExe = Join-Path $venvPath "Scripts\pip.exe"
-        & $pipExe install -r requirements.txt
-        Set-Location $PSScriptRoot
     }
 }
 
@@ -73,48 +38,35 @@ function Display-Status {
 function Launch-All {
     Clear-Host
     Check-Prerequisites
-    Install-Dependencies
     Write-Section "Starting All Services"
     
-    # Correction Join-Path pour PowerShell 5.1
-    $backendDir = Join-Path $PSScriptRoot "packages\backend"
-    Start-Process powershell -WorkingDirectory $backendDir -ArgumentList "-NoExit", "-Command", "& '.\venv\Scripts\Activate.ps1'; python -m uvicorn src.main:app --reload"
-    Start-Sleep -Seconds 2
+    # 1. Lancement Backend
+    $backendDir = "$PSScriptRoot\packages\backend"
+    if (Test-Path $backendDir) {
+        Start-Process powershell -WorkingDirectory $backendDir -ArgumentList "-NoExit", "-Command", "& '.\venv\Scripts\Activate.ps1'; python -m uvicorn src.main:app --reload"
+        Start-Sleep -Seconds 2
+    }
     
-    $demoDir = Join-Path $PSScriptRoot "packages\frontend-demo"
-    Start-Process powershell -WorkingDirectory $demoDir -ArgumentList "-NoExit", "-Command", "npm run dev"
-    Start-Sleep -Seconds 1
+    # 2. Lancement Demo via la puissance de npx (cherche et lance vite automatiquement)
+    $demoDir = "$PSScriptRoot\packages\frontend\demo"
+    if (Test-Path $demoDir) {
+        Start-Process powershell -WorkingDirectory $demoDir -ArgumentList "-NoExit", "-Command", "npx vite --port 5174"
+        Start-Sleep -Seconds 1
+    }
     
-    $officialDir = Join-Path $PSScriptRoot "packages\frontend-official"
-    Start-Process powershell -WorkingDirectory $officialDir -ArgumentList "-NoExit", "-Command", "npm run dev"
+    # 3. Lancement Official via npx
+    $officialDir = "$PSScriptRoot\packages\frontend\official"
+    if (Test-Path $officialDir) {
+        Start-Process powershell -WorkingDirectory $officialDir -ArgumentList "-NoExit", "-Command", "npx vite --port 5173"
+    }
+    
     Display-Status
 }
 
-function Launch-Demo {
-    Clear-Host
-    Check-Prerequisites
-    $demoDir = Join-Path $PSScriptRoot "packages\frontend-demo"
-    Start-Process powershell -WorkingDirectory $demoDir -ArgumentList "-NoExit", "-Command", "npm run dev"
-}
-
-function Launch-Dev {
-    Clear-Host
-    Check-Prerequisites
-    $officialDir = Join-Path $PSScriptRoot "packages\frontend-official"
-    Start-Process powershell -WorkingDirectory $officialDir -ArgumentList "-NoExit", "-Command", "npm run dev"
-}
-
-function Launch-Backend {
-    Clear-Host
-    Check-Prerequisites
-    Install-Dependencies
-    $backendDir = Join-Path $PSScriptRoot "packages\backend"
-    $venvExe = Join-Path $backendDir "venv\Scripts\python.exe"
+if ($Backend) {
+    $backendDir = "$PSScriptRoot\packages\backend"
     Set-Location $backendDir
-    & $venvExe -m uvicorn src.main:app --reload
+    & ".\venv\Scripts\python.exe" -m uvicorn src.main:app --reload
+} else {
+    Launch-All
 }
-
-if ($Demo) { Launch-Demo }
-elseif ($Dev) { Launch-Dev }
-elseif ($Backend) { Launch-Backend }
-else { Launch-All }

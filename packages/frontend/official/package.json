@@ -3,8 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "dev": "cd ../../frontend-official && npm run dev",
-    "build": "cd ../../frontend-official && npm run build",
-    "test": "cd ../../frontend-official && npm test"
+    "dev": "cd ../../../packages/frontend/official && npm run dev",
+    "build": "cd ../../../packages/frontend/official && npm run build"
   }
 }
