@@ -24,6 +24,6 @@ class Notification(BaseModel):
     is_read = Column(Boolean, default=False, nullable=False)
     
     # Relationships
-    user = relationship("User", foreign_keys=[user_id], back_populates="notifications")
-    related_user = relationship("User", foreign_keys=[related_user_id])
+    user = relationship("User", foreign_keys="[Notification.user_id]", back_populates="notifications")
+    related_user = relationship("User", foreign_keys="[Notification.related_user_id]")
     post = relationship("Post")

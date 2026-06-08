@@ -1,4 +1,6 @@
-from sqlalchemy import Column, String, Text, Integer, ForeignKey, Enum as SQLEnum, ARRAY
+from sqlalchemy import Column, String, Text, Integer, ForeignKey, Enum as SQLEnum, JSON
+
+media_urls = Column(JSON, nullable=True)
 from sqlalchemy.orm import relationship
 from enum import Enum
 from typing import List
@@ -20,7 +22,7 @@ class Post(BaseModel):
     user_id = Column(String(36), ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True)
     content = Column(Text, nullable=False)
     post_type = Column(SQLEnum(PostType), default=PostType.text, nullable=False)
-    media_urls = Column(ARRAY(String), nullable=True)
+    media_urls = Column(JSON, nullable=True)
     likes_count = Column(Integer, default=0, nullable=False)
     comments_count = Column(Integer, default=0, nullable=False)
     

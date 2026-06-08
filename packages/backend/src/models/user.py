@@ -58,6 +58,6 @@ class User(BaseModel):
         back_populates="recipient",
         cascade="all, delete-orphan"
     )
-    notifications = relationship("Notification", back_populates="user", cascade="all, delete-orphan")
+    notifications = relationship("Notification", foreign_keys="[Notification.user_id]", back_populates="user", cascade="all, delete-orphan")
     events = relationship("Event", back_populates="creator", cascade="all, delete-orphan")
     event_rsvps = relationship("EventRSVP", back_populates="user", cascade="all, delete-orphan")
